@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>☕ Café Finder</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="app-wrapper">
+
+    <!-- Header -->
+    <header class="header">
+      <div class="header-left">
+        <span class="header-icon">☕</span>
+        <div>
+          <h1>Café Finder</h1>
+          <p>Discover cozy spots near you</p>
+        </div>
+      </div>
+      <button id="locate-btn" class="locate-btn">📍 Use my location</button>
+    </header>
+
+    <!-- Search -->
+    <div class="search-bar">
+      <input id="search-input" type="text" placeholder="Search a city or neighborhood..." />
+      <button id="search-btn">Search</button>
+    </div>
+
+    <!-- Filters -->
+    <div class="filters" id="filters">
+      <button class="chip active" data-filter="all">All</button>
+      <button class="chip" data-filter="wifi">Wi-Fi</button>
+      <button class="chip" data-filter="pet">Pet friendly</button>
+      <button class="chip" data-filter="open">Open now</button>
+      <button class="chip" data-filter="outdoor">Outdoor seating</button>
+    </div>
+
+    <!-- Main Layout -->
+    <div class="main-layout">
+
+      <!-- Sidebar -->
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar-msg" id="sidebar-msg">
+          <span>🗺️</span>
+          <p>Search or allow location to find cafes near you!</p>
+        </div>
+        <div id="cafe-list"></div>
+      </aside>
+
+      <!-- Map -->
+      <div id="map"></div>
+
+    </div>
+
+    <!-- Status bar -->
+    <div class="status-bar">
+      <span id="status-text">Ready to find cafes ☕</span>
+      <span class="powered">Powered by Google Maps Platform</span>
+    </div>
+
+  </div>
+
+  <!-- Info window template (hidden, cloned by JS) -->
+  <div id="info-template" style="display:none">
+    <div class="info-window">
+      <div class="info-emoji" id="tmpl-emoji">☕</div>
+      <div class="info-body">
+        <h3 id="tmpl-name"></h3>
+        <p id="tmpl-addr"></p>
+        <p id="tmpl-rating"></p>
+        <a id="tmpl-link" target="_blank" rel="noopener">Open in Maps ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Google Maps JS API — replace YOUR_API_KEY -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places&callback=initMap" async defer></script>
+  <script src="cafe.js"></script>
+
+</body>
+</html>
