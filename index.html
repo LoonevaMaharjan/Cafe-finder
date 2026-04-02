@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>☕ Café Finder</title>
+  <title>Cafe Finder</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -12,55 +14,64 @@
 
     <header class="header">
       <div class="header-left">
-        <span class="header-icon">☕</span>
+        <div class="header-icon">☕</div>
         <div>
-          <h1>Café Finder</h1>
+          <h1>Cafe Finder</h1>
           <p>Discover cozy spots near you</p>
         </div>
       </div>
-      <button id="locate-btn" class="locate-btn">📍 Use my location</button>
+      <button id="locate-btn" class="locate-btn">My Location</button>
     </header>
 
     <div class="search-bar">
-      <input id="search-input" type="text" placeholder="Search a city or neighborhood..." />
+      <div class="search-input-wrap">
+        <span class="search-icon">⌕</span>
+        <input id="search-input" type="text" placeholder="Search any city, area or neighborhood..." />
+      </div>
       <button id="search-btn">Search</button>
     </div>
 
-    <div class="filters">
+    <div class="filters" id="filters">
       <button class="chip active" data-filter="all">All</button>
       <button class="chip" data-filter="open">Open Now</button>
+      <button class="chip" data-filter="top">Top Rated</button>
       <button class="chip" data-filter="wifi">Wi-Fi</button>
       <button class="chip" data-filter="pet">Pet Friendly</button>
       <button class="chip" data-filter="outdoor">Outdoor</button>
-      <button class="chip" data-filter="top">Top Rated ★</button>
+      <button class="chip" data-filter="cheap">Budget</button>
     </div>
 
     <div class="main-layout">
-      <aside class="sidebar">
+      <aside class="sidebar" id="sidebar">
         <div class="sidebar-msg" id="sidebar-msg">
-          <span>🗺️</span>
-          <p>Search or allow location to find cafes near you!</p>
+          <div class="msg-icon">☕</div>
+          <p class="msg-title">Find your next café</p>
+          <p class="msg-sub">Search a location or tap "My Location" to discover cafes nearby</p>
         </div>
         <div id="cafe-list"></div>
       </aside>
 
-      <!-- Detail panel (shown when a cafe is selected) -->
-      <div id="detail-panel" class="detail-panel hidden">
-        <button id="close-detail">✕</button>
-        <div id="detail-content"></div>
+      <div class="map-container">
+        <div id="map"></div>
+        <button id="search-area-btn" class="search-area-btn hidden">
+          Search this area
+        </button>
       </div>
 
-      <div id="map"></div>
+      <div id="detail-panel" class="detail-panel hidden">
+        <button id="close-detail" class="close-btn">✕</button>
+        <div id="detail-content"></div>
+      </div>
     </div>
 
     <div class="status-bar">
-      <span id="status-text">Ready to find cafes ☕</span>
+      <span id="status-text">Ready to find cafes</span>
       <span class="powered">Powered by Google Maps Platform</span>
     </div>
 
   </div>
 
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBjVGI1q3yvJ6PcEJFhN4yv3RR34fS34DM&libraries=places&callback=initMap" async defer></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places,geometry&callback=initMap" async defer></script>
   <script src="cafe.js"></script>
 </body>
 </html>
